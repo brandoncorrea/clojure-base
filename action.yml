@@ -46,3 +46,4 @@ runs:
           chmod +x linux-install-${{ inputs.clojure-version }}.sh
           sudo ./linux-install-${{ inputs.clojure-version }}.sh
           rm ./linux-install-${{ inputs.clojure-version }}.sh
+        fi
