@@ -24,8 +24,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v4
-      uses: brandoncorrea/clojure-base@v1
+      - uses: actions/checkout@v4
+      - uses: brandoncorrea/clojure-base@v1
 
       - name: Test
         run: clojure -M:test
@@ -42,14 +42,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v4
-      uses: brandoncorrea/clojure-base@v1
-      with:
-        clojure-version: 1.11.1.1119
-        java-version: 8
-        java-distribution: dragonwell
+      - uses: actions/checkout@v4
+      - uses: brandoncorrea/clojure-base@v1
+        with:
+          clojure-version: 1.11.1.1119
+          java-version: 8
+          java-distribution: dragonwell
 
       - name: Test
         run: clojure -M:test
 ```
-
