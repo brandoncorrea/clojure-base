@@ -1,0 +1,20 @@
+name: Run Tests
+
+on: [push]
+
+jobs:
+  build-with-inputs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: brandoncorrea/clojure-base@master
+        with:
+          clojure-version: 1.11.1.1119
+          java-version: 8
+          java-distribution: 'zulu'
+
+  build-with-defaults:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: brandoncorrea/clojure-base@master
