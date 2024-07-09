@@ -37,13 +37,13 @@ runs:
       run: |
         if [ -z "${{ inputs.clojure-version }}" ]; then
           echo "Installing Clojure Latest"
-          curl -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh
+          curl -L -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh
           chmod +x linux-install.sh
           sudo ./linux-install.sh
           rm ./linux-install.sh
         else
           echo "Installing Clojure ${{ inputs.clojure-version }}"
-          curl -O https://download.clojure.org/install/linux-install-${{ inputs.clojure-version }}.sh
+          curl -L -O https://download.clojure.org/install/linux-install-${{ inputs.clojure-version }}.sh
           chmod +x linux-install-${{ inputs.clojure-version }}.sh
           sudo ./linux-install-${{ inputs.clojure-version }}.sh
           rm ./linux-install-${{ inputs.clojure-version }}.sh
