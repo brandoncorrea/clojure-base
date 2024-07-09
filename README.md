@@ -1,5 +1,7 @@
 # Clojure Base Action
 
+[![Run Tests](https://github.com/brandoncorrea/clojure-base/actions/workflows/test.yml/badge.svg)](https://github.com/brandoncorrea/clojure-base/actions/workflows/test.yml)
+
 This contains some base steps to install and immediately start using the Clojure CLI in a GitHub action.
 
 This includes:
@@ -29,7 +31,7 @@ jobs:
 
       - name: Test
         run: clojure -M:test
-``
+```
 
 Installs Clojure 1.11.1.1119 and dragonwell's Java 8 distribution
 
