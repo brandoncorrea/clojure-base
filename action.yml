@@ -1,5 +1,5 @@
 name: 'Clojure Base'
-description: 'Reusabe GitHub Action for Clojure projects'
+description: 'Reusable GitHub Action for Clojure projects'
 
 inputs:
   clojure-version:
