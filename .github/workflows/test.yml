@@ -13,13 +13,13 @@ jobs:
           java-version: 8
           java-distribution: 'zulu'
 
-      - name: Execute Clojure
-        run: clojure -e "(+ 1 2)"
+      - name: Get Clojure Version
+        run: clojure --version
 
   build-with-defaults:
     runs-on: ubuntu-latest
 
     steps:
       - uses: brandoncorrea/clojure-base@master
-      - name: Execute Clojure
-        run: clojure -e "(+ 1 2)"
+      - name: Get Clojure Version
+        run: clojure --version
