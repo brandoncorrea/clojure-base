@@ -1,0 +1,48 @@
+name: 'Clojure Base'
+description: 'Reusabe GitHub Action for Clojure projects'
+
+inputs:
+  clojure-version:
+    description: 'The version of Clojure to install (defaults to latest)'
+    required: false
+    default: ''
+  java-version:
+    description: 'The version of Java to install (defaults to 21)'
+    required: false
+    default: '21'
+  java-distribution:
+    description: 'The Java distribution to use (defaults to temurin)'
+    required: false
+    default: 'temurin'
+
+runs:
+  using: 'composite'
+
+  steps:
+    - name: Set up JDK
+      uses: actions/setup-java@4
+      with:
+        java-version: ${{ inputs.java-version }}
+        distribution: ${{ inputs.java-distribution }}
+
+    - name: Cache Clojure Dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-deps-${{ hashFiles('**/deps.edn') }}
+        restore-keys: ${{ runner.os }}-deps-
+
+    - name: Install Clojure CLI
+      run: |
+        if [ -z "${{ inputs.clojure-version }}" ]; then
+          echo "Installing Clojure Latest"
+          curl -L -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh
+          chmod +x linux-install.sh
+          sudo ./linux-install.sh
+          rm ./linux-install.sh
+        else
+          echo "Installing Clojure ${{ inputs.clojure-version }}"
+          curl -L -O https://download.clojure.org/install/linux-install-${{ inputs.clojure-version }}.sh
+          chmod +x linux-install-${{ inputs.clojure-version }}.sh
+          sudo ./linux-install-${{ inputs.clojure-version }}.sh
+          rm ./linux-install-${{ inputs.clojure-version }}.sh
